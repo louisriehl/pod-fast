@@ -90,7 +90,7 @@ typings/
 
 # Electron-Forge
 out/
-.vscode
+.vscode/
 .eslint.json
-./node_modules
-./.webpack
+node_modules/
+.webpack/
