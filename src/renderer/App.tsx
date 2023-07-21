@@ -3,6 +3,7 @@ import { ReactElement, useRef, useState } from 'react';
 import React from 'react';
 import { AddPlayer } from './AddPlayer';
 import { ManagePlayer } from './ManagePlayer';
+import { ManageGame } from './ManageGame';
 
 export function App(): ReactElement {
   const [activePlayers, setActivePlayers] = useState([]);
@@ -45,7 +46,7 @@ export function App(): ReactElement {
           <ManagePlayer players={activePlayers} setPlayers={setActivePlayers} />
         </div>
         <div className={'tab-pane' + (activeTabs[2] ? ' active' : '')} id="game" role="tabpanel" aria-labelledby="game-tab">
-          <p>not ready!</p>
+          <ManageGame />
         </div>
       </div>
       
