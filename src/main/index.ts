@@ -75,5 +75,71 @@ app.on('activate', () => {
 ipcMain.on('sendPlayers', handleGotPlayers);
 
 function handleGotPlayers(event: any, players: string[]) {
-  console.log(`Got players ${JSON.stringify(players)}`);
+  console.log(`Generated Pods: ${JSON.stringify(generatePods(players))}`);
+}
+
+function generatePods(players: string[]): string[][] {
+  const shuffledArray = shuffle(players);
+  return sortIntoPods(shuffledArray);
+}
+
+// Sort players into as many pods of 4 as possible, and pods of 3 for the rest
+function sortIntoPods(players: string[]): string[][] {
+  const totalPlayers = players.length;
+  const remainderOfFour = totalPlayers % 4;
+  let sortedPods: string[][];
+  console.log(`Total players: ${totalPlayers}, remainder: ${remainderOfFour}`);
+
+  // TODO: edge cases where we have less than 8 players? or just set minumum to 8?
+
+  // No need for 3-person pods
+  if (remainderOfFour === 0) {
+    sortedPods = splitIntoEqualGroups(players, 4);
+  } else {
+    const maximumNumberOfFourPods = getMaximumFourPodGroups(totalPlayers, remainderOfFour);
+    console.log(`Max 4 pods: ${maximumNumberOfFourPods}`);
+    const endIndex = 4 * maximumNumberOfFourPods;
+    const fourGroupSlice = players.slice(0, endIndex);
+    const threeGroupSlice = players.slice(endIndex);
+    console.log(`End index: ${endIndex}, 4 group length = ${fourGroupSlice.length}, 3 group length: ${threeGroupSlice.length}`);
+    const fourPlayerPods = splitIntoEqualGroups(fourGroupSlice, 4);
+    const threePlayerPods = splitIntoEqualGroups(threeGroupSlice, 3);
+
+    sortedPods = fourPlayerPods.concat(threePlayerPods);
+  }
+
+  return sortedPods;
+}
+
+function getMaximumFourPodGroups(totalPlayers: number, remainder: number): number {
+  return (totalPlayers - (3 * (4 - remainder))) / 4;
+}
+
+function splitIntoEqualGroups(array: any[], size: number): any[][] {
+  const groups: any[][] = []
+  
+  for (let i = 0; i < array.length; i = i + size) {
+    groups.push(array.slice(i, i + size));
+  }
+
+  return groups;
+}
+
+// Fisher-Yates shuffle https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
+function shuffle(array: string[]) {
+  let currentIndex = array.length,  randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
 }

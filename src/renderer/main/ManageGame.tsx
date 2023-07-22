@@ -55,39 +55,9 @@ export function ManageGame(): ReactElement {
     'Jair Stanton',
     'Alexia Obrien',
     'Frida Choi',
-    'Juan Colon']
-  let groups: any[][] = [];
+    'Juan Colon'];
 
-  function splitIntoEqualGroups(array: any[], size: number): any[][] {
-    const group: any[][] = []
-    if (array.length < 2) {
-      console.log('you need more friends...');
-      return group;
-    }
     
-    for (let i = 0; i < players.length; i = i + size) {
-      const lastPossibleItem = i + size > array.length - 1 ? array.length : i + size;
-    
-      console.log(`last possible item ${lastPossibleItem}`)
-      group.push(array.slice(i,lastPossibleItem));
-      console.log(`Remaining players: ${array.length - lastPossibleItem}`)
-    }
-
-    return group;
-  }
-
-  groups = splitIntoEqualGroups(players, 4);
-
-  const lastGroupSize = groups[groups.length-1].length;
-  console.log(lastGroupSize);
-
-  if (lastGroupSize === 1) {
-    // TODO better way for this
-    const standouts: any[] = [...groups.pop(), ...groups.pop(), ...groups.pop()];
-    console.log(JSON.stringify(standouts));
-    groups.push(splitIntoEqualGroups(standouts, 3));
-  }
-
   function sendPlayers(event: any): void {
     event.stopPropagation();
     window.mainApi.sendPlayers(players);

@@ -23,9 +23,17 @@ const config: ForgeConfig = {
         config: rendererConfig,
         entryPoints: [
           {
-            html: './src/renderer/index.html',
-            js: './src/renderer/renderer.ts',
+            html: './src/renderer/main/index.html',
+            js: './src/renderer/main/renderer.ts',
             name: 'main_window',
+            preload: {
+              js: './src/main/preload.ts',
+            },
+          },
+          {
+            html: './src/renderer/pods/index.html',
+            js: './src/renderer/pods/renderer.ts',
+            name: 'pods_window',
             preload: {
               js: './src/main/preload.ts',
             },
