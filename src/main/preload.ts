@@ -7,4 +7,5 @@ console.log('Initializing context bridge')
 
 contextBridge.exposeInMainWorld('mainApi', {
   sendPlayers: (players: string[]) => ipcRenderer.send('sendPlayers', players),
+  onSendPods: (callback: any) => ipcRenderer.on('onSendPods', callback),
 });

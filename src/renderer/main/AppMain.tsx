@@ -1,11 +1,11 @@
 import { createRoot } from 'react-dom/client';
-import { ReactElement, useRef, useState } from 'react';
+import { ReactElement, useState } from 'react';
 import React from 'react';
 import { AddPlayer } from './AddPlayer';
 import { ManagePlayer } from './ManagePlayer';
 import { ManageGame } from './ManageGame';
 
-export function App(): ReactElement {
+export function AppMain(): ReactElement {
   const [activePlayers, setActivePlayers] = useState([]);
   const [activeTabs, setActiveTabs] = useState([true, false, false]);
 
@@ -58,7 +58,7 @@ export function App(): ReactElement {
 function render() {
   const domNode = document.getElementById('root');
   const root = createRoot(domNode);
-  root.render(<App />);
+  root.render(<AppMain />);
 }
 
 render();

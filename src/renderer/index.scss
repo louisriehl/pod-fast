@@ -18,3 +18,40 @@
 .span-link {
   cursor: pointer;
 }
+
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.table {
+  border: black solid 2px;
+  border-radius: 7px;
+  padding: 5px;
+}
+
+.table-block {
+  width: 20%;
+  margin: 0 1em;
+}
+
+.table-name {
+  margin: 0px 5px;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.table-name:nth-child(even) {
+  background-color: lightgray;
+}
+
+h1 { 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } 
+h3 { 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } 
+p { 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } 
+blockquote { 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } 
+pre { 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; }

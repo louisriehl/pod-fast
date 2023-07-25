@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 
 export function ManageGame(): ReactElement {
   const players: string[] = ['Valentin Gallegos',
-    'Roy Rice',
+    'Roy Rice SuperLongNamerson Mcgee',
     'Aryan Ball',
     'Ann Pruitt',
     'Beatrice Bush',
