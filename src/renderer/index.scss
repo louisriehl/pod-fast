@@ -4,10 +4,15 @@
   margin: 2rem;
 }
 
+.tab-element {
+  margin: 1em;
+}
+
 .player-input {
   width: 500px;
   height: 300px;
   overflow: scroll;
+  padding: 0.5em;
 }
 
 .player-list-item {
@@ -43,6 +48,11 @@
 
 .table-name:nth-child(even) {
   background-color: lightgray;
+}
+
+.icon-cancel {
+  color: transparent;
+  text-shadow: 0 0 0 red;
 }
 
 h1 { 

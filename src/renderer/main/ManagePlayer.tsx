@@ -7,7 +7,7 @@ export function ManagePlayer({players, setPlayers}): ReactElement {
     return (<li className="list-group-item" key={index}>
       <div className='player-list-item'>
         {player}
-        <span className='span-link' onClick={e => removePlayer(index)}>&#10006;</span>
+        <span className='span-link icon-cancel' onClick={e => removePlayer(index)}>&#10006;</span>
       </div>
     </li>)});
 
@@ -19,9 +19,9 @@ export function ManagePlayer({players, setPlayers}): ReactElement {
   }
 
   return (
-    <div>
-      <p>Manage players</p>
-      <p>I have {players.length || 0} players!</p>
+    <div className='tab-element'>
+      {/* TODO: search box */}
+      {/* TODO: clear list */}
       <ul className="list-group">
         {playerList}
       </ul>

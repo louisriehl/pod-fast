@@ -64,7 +64,7 @@ export function ManageGame(): ReactElement {
   }
 
   return (
-    <div>
+    <div className='tab-element'>
       <button className='btn btn-primary' onClick={(e) => sendPlayers(e)}>Generate Pods</button>
     </div>
 
