@@ -101,11 +101,17 @@ function establishSession() {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
 ipcMain.on('sendPlayers', handleGotPlayers);
+ipcMain.handle('getTableCount', handleGetTableCount)
 
 function handleGotPlayers(event: any, players: string[]) {
   const pods = generatePods(players);
   // console.log(`Generated Pods: ${JSON.stringify(pods)}`);
   createPodsWindow(pods)
+}
+
+function handleGetTableCount(event: any, players: string[]): number {
+  const pods = generatePods(players);
+  return pods.length;
 }
 
 function generatePods(players: string[]): string[][] {

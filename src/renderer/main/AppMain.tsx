@@ -56,7 +56,7 @@ export function AppMain(): ReactElement {
           <ManagePlayer players={activePlayers} setPlayers={setActivePlayers} />
         </div>
         <div className={'tab-pane' + (activeTabs[2] ? ' active' : '')} id="game" role="tabpanel" aria-labelledby="game-tab">
-          <ManageGame />
+          <ManageGame players={activePlayers} />
         </div>
       </div>
       
