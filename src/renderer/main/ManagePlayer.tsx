@@ -40,11 +40,19 @@ export function ManagePlayer({players, setPlayers}): ReactElement {
     setFilter('');
   }
 
+  function clearPlayers(event): void {
+    event.stopPropagation();
+    setPlayers([]);
+    setFilter('');
+  }
+
   return (
     <div className='tab-element'>
       <div className='search-cancel'>
         <input style={{width:'50%'}}value={filter} type="text" className="form-control" placeholder="Search for player" onChange={(e) => onFilterChange(e)}/>
-        <button className='btn btn-outline-danger'>Clear players</button>
+        <div>
+          <button className='btn btn-outline-danger' onClick={(e) => clearPlayers(e)}>Clear players</button>
+        </div>
       </div>
       <hr></hr>
       <div className="list-group">
