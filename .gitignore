@@ -94,3 +94,6 @@ out/
 .eslint.json
 node_modules/
 .webpack/
+.nvmrc
+
+.idea/
