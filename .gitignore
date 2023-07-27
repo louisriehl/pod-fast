@@ -91,9 +91,9 @@ typings/
 # Electron-Forge
 out/
 .vscode/
-.eslint.json
 node_modules/
 .webpack/
+
 .nvmrc
 
 .idea/

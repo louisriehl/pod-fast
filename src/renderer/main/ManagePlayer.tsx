@@ -3,16 +3,27 @@ import { ReactElement } from 'react';
 
 export function ManagePlayer({players, setPlayers}): ReactElement {
   const [filter, setFilter] = useState('');
+  type playerMapped = { [key: string]: string; };
+  let playerMap: playerMapped[] = [];
 
-  // TODO: tired right now, figure out how to keep the original array after filtering
-  const playerList = players
-    .sort()
-    .map((player, index) => {
-      const isFiltered = player.toLowerCase().includes(filter.toLowerCase()) && filter !== '';
-      console.log(`${player} isFiltered ${isFiltered}: ${filter}`);
-      return (<li className="list-group-item" style={{display: isFiltered ? 'none' : 'block'}} key={index}>
+  playerMap = players.map((player: string, index: number) => {
+    return {
+      [index]: player
+    };
+  });
+
+  const playerList = playerMap
+    .sort((a, b) => {
+      return a[Object.keys(a)[0]].toLowerCase().localeCompare(b[Object.keys(b)[0]].toLowerCase());
+    })
+    .filter((playerMapped) => playerMapped[Object.keys(playerMapped)[0]].toLowerCase().includes(filter.toLowerCase()) || filter === '')
+    .map((playerMapped) => {
+      const index = Object.keys(playerMapped)[0];
+      const playerName = playerMapped[index];
+      console.log(`${playerName} index ${index}`);
+      return (<li className="list-group-item" key={index}>
         <div className='player-list-item'>
-          {player}
+          {playerName}
           <span className='span-link icon-cancel' onClick={e => removePlayer(index)}>&#10006;</span>
         </div>
       </li>)
@@ -22,11 +33,11 @@ export function ManagePlayer({players, setPlayers}): ReactElement {
     setFilter(event.target.value);
   }
 
-  function removePlayer(index: number): void {
-    // deep clones array
+  function removePlayer(index: string): void {
     const remainingPlayers = [...players];
-    remainingPlayers.splice(index, 1);
+    remainingPlayers.splice(Number(index), 1);
     setPlayers(remainingPlayers);
+    setFilter('');
   }
 
   return (

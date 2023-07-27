@@ -40,6 +40,8 @@ const config: ForgeConfig = {
           },
         ],
       },
+      port: 3636,
+      loggerPort: 9005,
     }),
   ],
 };
