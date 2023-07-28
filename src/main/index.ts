@@ -12,6 +12,8 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+const isPackaged = app.isPackaged;
+
 const createMainWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -29,7 +31,9 @@ const createMainWindow = (): void => {
 
   // Open the DevTools.
   mainWindow.on('ready-to-show', () => {
-    mainWindow.webContents.openDevTools();
+    if (!isPackaged) {
+      mainWindow.webContents.openDevTools();
+    }
     mainWindow.show();
   })
 };
@@ -50,8 +54,9 @@ const createPodsWindow = (pods: string[][]): void => {
 
   // Open the DevTools.
   podsWindow.on('ready-to-show', () => {
-    podsWindow.webContents.openDevTools();
-    console.log(`Sending ${JSON.stringify(pods)}`)
+    if (!isPackaged) {
+      podsWindow.webContents.openDevTools();
+    }
     podsWindow.webContents.send('onSendPods', pods);
     podsWindow.show();
   });
@@ -105,7 +110,6 @@ ipcMain.handle('getTableCount', handleGetTableCount)
 
 function handleGotPlayers(event: any, players: string[]) {
   const pods = generatePods(players);
-  // console.log(`Generated Pods: ${JSON.stringify(pods)}`);
   createPodsWindow(pods)
 }
 
@@ -124,9 +128,6 @@ function sortIntoPods(players: string[]): string[][] {
   const totalPlayers = players.length;
   const remainderOfFour = totalPlayers % 4;
   let sortedPods: string[][];
-  console.log(`Total players: ${totalPlayers}, remainder: ${remainderOfFour}`);
-
-  // TODO: edge cases where we have less than 8 players? or just set minumum to 8?
 
   // No need for 3-person pods
   if (remainderOfFour === 0) {
