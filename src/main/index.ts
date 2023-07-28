@@ -13,16 +13,19 @@ if (require('electron-squirrel-startup')) {
 }
 
 // TODO: menu overrides, updating window sizes, css cleanups for manage players, icon
-
 const isPackaged = app.isPackaged;
+
+const WINDOW_HEIGHT = 800;
+const WINDOW_WIDTH = 1200;
 
 const createMainWindow = (): void => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: WINDOW_HEIGHT,
+    width: WINDOW_WIDTH,
     show: false,
     maximizable: false,
+    title: 'PodFast',
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },
@@ -43,9 +46,10 @@ const createMainWindow = (): void => {
 const createPodsWindow = (pods: string[][]): void => {
   // TODO
   const podsWindow = new BrowserWindow({
-    height: 600,
-    width: 800,
+    height: WINDOW_HEIGHT,
+    width: WINDOW_WIDTH,
     show: false,
+    title: 'Tables',
     webPreferences: {
       preload: PODS_WINDOW_PRELOAD_WEBPACK_ENTRY,
     },

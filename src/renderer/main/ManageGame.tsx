@@ -86,6 +86,7 @@ export function ManageGame(props: {players: string[]}): ReactElement {
 
   return (
     <div className='tab-element'>
+      <h2>Table count options</h2>
       <div className="form-check mb-3">
         <input className="form-check-input" type="radio" value="set" onChange={(e) => onRadioChange(e)} checked={selectedTableOption === "set"}/>
           <label className="form-check-label mb-1" htmlFor="flexRadioDefault1">
