@@ -3,11 +3,11 @@ import React from 'react';
 import { ReactElement, useState } from 'react';
 
 // TODO: add a warning when a duplicate player is detected
-export function AddPlayer({activePlayers, setPlayers}): ReactElement {
+export function AddPlayer(props: {activePlayers: string[], setPlayers: any}): ReactElement {
   const [playerString, setPlayerString] = useState('');
   const [currentPlayers, setCurrentPlayers] = useState([]);
 
-  function onChange(event): void {
+  function onChange(event: any): void {
     const value = event.target.value;
     setPlayerString(value);
     const currentPlayers: string[] = value
@@ -20,9 +20,9 @@ export function AddPlayer({activePlayers, setPlayers}): ReactElement {
 
   function updatePlayers(event: React.MouseEvent<any, any>): void {
     event.stopPropagation();
-    const newArray = activePlayers.concat(currentPlayers);
+    const newArray = props.activePlayers.concat(currentPlayers);
     console.log(newArray);
-    setPlayers(newArray);
+    props.setPlayers(newArray);
     setCurrentPlayers([]);
     setPlayerString('');
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ReactElement } from 'react';
 
-export function ManageGame({players}): ReactElement {
+export function ManageGame(props: {players: string[]}): ReactElement {
   const min = 1;
   const max = 50;
 
@@ -14,10 +14,10 @@ export function ManageGame({players}): ReactElement {
 
   function sendPlayers(event: any): void {
     event.stopPropagation();
-    window.mainApi.sendPlayers(players);
+    window.mainApi.sendPlayers(props.players);
   }
 
-  function onRadioChange(event) {
+  function onRadioChange(event: any) {
     const value: 'auto' | 'set' | 'range' = event.target.value;
     switch (value) {
       case 'auto':
@@ -40,7 +40,7 @@ export function ManageGame({players}): ReactElement {
     setRequestedTableCount(1);
   }
 
-  function onSetChange(event) {
+  function onSetChange(event: any) {
     let value = event.target.value;
     if (value < min) {
       value = min;
@@ -53,7 +53,7 @@ export function ManageGame({players}): ReactElement {
   }
 
   // TODO: need to properly calculate number of tables here (since state values dont update right away)
-  function onRangeChange(event, pos: 'from' | 'to') {
+  function onRangeChange(event: any, pos: 'from' | 'to') {
     let value = event.target.value;
     if (value < min) {
       value = min;
@@ -78,7 +78,7 @@ export function ManageGame({players}): ReactElement {
 
   useEffect(() => {
     const getTables = async () => {
-      setRequiredTableCount(await window.mainApi.getTableCount(players) || 0);
+      setRequiredTableCount(await window.mainApi.getTableCount(props.players) || 0);
     }
 
     getTables();
@@ -125,7 +125,7 @@ export function ManageGame({players}): ReactElement {
           </div>) : null
       }
       {
-        (players.length < 8) ?
+        (props.players.length < 8) ?
           (<div className="alert alert-danger d-flex align-items-center" role="alert">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                  className="bi bi-exclamation-triangle-fill flex-shrink-0 me-2" viewBox="0 0 16 16" role="img"
@@ -138,7 +138,7 @@ export function ManageGame({players}): ReactElement {
             </div>
           </div>) : null
       }
-      <button className='btn btn-primary' disabled={players.length === 0 || players.length < 8 || (requiredTableCount > requestedTableCount && selectedTableOption !== 'auto')} onClick={(e) => sendPlayers(e)}>Generate Pods</button>
+      <button className='btn btn-primary' disabled={props.players.length === 0 || props.players.length < 8 || (requiredTableCount > requestedTableCount && selectedTableOption !== 'auto')} onClick={(e) => sendPlayers(e)}>Generate Pods</button>
     </div>
 
     

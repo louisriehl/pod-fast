@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { ReactElement } from 'react';
 
-export function ManagePlayer({players, setPlayers}): ReactElement {
+export function ManagePlayer(props: {players: string[], setPlayers: any}): ReactElement {
   const [filter, setFilter] = useState('');
   type playerMapped = { [key: string]: string; };
   let playerMap: playerMapped[] = [];
 
-  const uniq = players
-    .map((name) => {
+  const uniq = props.players
+    .map((name: string) => {
       return {
         count: 1,
         name: name
       };
     })
-    .reduce((result, b) => {
+    .reduce((result: any, b: any) => {
       result[b.name] = (result[b.name] || 0) + b.count;
 
       return result;
@@ -21,7 +21,7 @@ export function ManagePlayer({players, setPlayers}): ReactElement {
 
   const duplicates = Object.keys(uniq).filter((a) => uniq[a] > 1);
 
-  playerMap = players.map((player: string, index: number) => {
+  playerMap = props.players.map((player: string, index: number) => {
     return {
       [index]: player
     };
@@ -44,20 +44,20 @@ export function ManagePlayer({players, setPlayers}): ReactElement {
       </li>)
     });
 
-  function onFilterChange(event) {
+  function onFilterChange(event: any) {
     setFilter(event.target.value);
   }
 
   function removePlayer(index: string): void {
-    const remainingPlayers = [...players];
+    const remainingPlayers = [...props.players];
     remainingPlayers.splice(Number(index), 1);
-    setPlayers(remainingPlayers);
+    props.setPlayers(remainingPlayers);
     setFilter('');
   }
 
-  function clearPlayers(event): void {
+  function clearPlayers(event: any): void {
     event.stopPropagation();
-    setPlayers([]);
+    props.setPlayers([]);
     setFilter('');
   }
 
