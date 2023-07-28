@@ -12,6 +12,8 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+// TODO: menu overrides, updating window sizes, css cleanups for manage players, icon
+
 const isPackaged = app.isPackaged;
 
 const createMainWindow = (): void => {
