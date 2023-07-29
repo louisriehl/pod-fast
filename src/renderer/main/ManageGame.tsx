@@ -52,9 +52,9 @@ export function ManageGame(props: {players: string[]}): ReactElement {
     setRequestedTableCount(value);
   }
 
-  // TODO: need to properly calculate number of tables here (since state values dont update right away)
   function onRangeChange(event: any, pos: 'from' | 'to') {
-    let value = event.target.value;
+    let value = Number(event.target.value);
+    console.log(`range value ${pos} ${value}`);
     if (value < min) {
       value = min;
     } else if (value > max) {
