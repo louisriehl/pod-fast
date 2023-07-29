@@ -15,7 +15,7 @@ const config: ForgeConfig = {
     name: 'PodFast',
   },
   rebuildConfig: {},
-  makers: [new MakerZIP({}, ['darwin', 'win32'])],
+  makers: [new MakerZIP({}, ['darwin', 'win32']), new MakerSquirrel()],
   plugins: [
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({

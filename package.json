@@ -2,7 +2,7 @@
   "name": "pod-fast",
   "productName": "pod-fast",
   "version": "1.0.0",
-  "description": "",
+  "description": "A basic app to prepare four-person pods for TCG games like MTG: Commander",
   "main": ".webpack/main",
   "scripts": {
     "start": "electron-forge start",
