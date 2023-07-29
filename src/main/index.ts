@@ -12,7 +12,7 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-// TODO: menu overrides, updating window sizes, css cleanups for manage players, icon
+// TODO: menu overrides, updating window sizes, css cleanups for manage players
 const isPackaged = app.isPackaged;
 
 const WINDOW_HEIGHT = 800;

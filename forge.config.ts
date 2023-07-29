@@ -13,6 +13,7 @@ const config: ForgeConfig = {
   packagerConfig: {
     asar: true,
     name: 'PodFast',
+    icon: './icons/icon'
   },
   rebuildConfig: {},
   makers: [new MakerZIP({}, ['darwin', 'win32']), new MakerSquirrel()],
