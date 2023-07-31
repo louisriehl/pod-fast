@@ -34,7 +34,7 @@ export function AppMain(): ReactElement {
 
   return (
     <div className="main-container">
-      <ul className="nav nav-tabs" style={{justifyContent: 'space-between'}} id="myTab" role="tablist">
+      <ul className="nav nav-tabs" style={{justifyContent: 'space-around'}} id="myTab" role="tablist">
         <li className="nav-item">
           <a onClick={(e) => activateTab(e, 0)} className={'nav-link' + (activeTabs[0] ? ' active' : '')} id="add-tab" data-toggle="tab" href="#add" role="tab" aria-controls="add" aria-selected="true">Add Players</a>
         </li>

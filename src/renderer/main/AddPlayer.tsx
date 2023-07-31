@@ -33,7 +33,12 @@ export function AddPlayer(props: {activePlayers: string[], setPlayers: any}): Re
         <span>Paste list of players below with one player name per line</span>
       </div>
       <form>
-        <textarea placeholder='Paste or type player names here' value={playerString} onChange={e => onChange(e)} className='player-input'/>
+        <textarea placeholder='Logan Lam
+Iyana Stephens
+Ezequiel Carrillo
+Muhammad Suarez
+...' 
+        value={playerString} onChange={e => onChange(e)} className='player-input'/>
         <br></br>
         <div style={{margin: '1em 0'}}>
           <button type='button' onClick={e => updatePlayers(e)} className='btn btn-primary'>Submit player list</button>
