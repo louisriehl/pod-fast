@@ -1,9 +1,7 @@
 // See the Electron documentation for details on how to use preload scripts:
 // https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
 
-import { contextBridge, ipcMain, ipcRenderer } from 'electron';
-
-console.log('Initializing context bridge')
+import { contextBridge, ipcRenderer } from 'electron';
 
 contextBridge.exposeInMainWorld('mainApi', {
   sendPlayers: (players: string[]) => ipcRenderer.send('sendPlayers', players),
