@@ -94,6 +94,4 @@ out/
 node_modules/
 .webpack/
 
-.nvmrc
-
 .idea/
