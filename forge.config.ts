@@ -8,6 +8,7 @@ import { WebpackPlugin } from '@electron-forge/plugin-webpack';
 
 import { mainConfig } from './webpack.main.config';
 import { rendererConfig } from './webpack.renderer.config';
+import MakerDMG from '@electron-forge/maker-dmg';
 
 const config: ForgeConfig = {
   packagerConfig: {
@@ -16,7 +17,7 @@ const config: ForgeConfig = {
     icon: './icons/icon'
   },
   rebuildConfig: {},
-  makers: [new MakerZIP({}, ['darwin', 'win32']), new MakerSquirrel()],
+  makers: [new MakerZIP({}, ['darwin', 'win32']), new MakerSquirrel(), new MakerDMG()],
   plugins: [
     new AutoUnpackNativesPlugin({}),
     new WebpackPlugin({
