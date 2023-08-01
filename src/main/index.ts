@@ -12,7 +12,6 @@ if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
-// TODO: menu overrides, css cleanups for manage players
 const isPackaged = app.isPackaged;
 
 const WINDOW_HEIGHT = 800;
@@ -119,10 +118,6 @@ function modifyMenu(): void {
         {
           label: 'GitHub',
           click: () => shell.openExternal('https://github.com/louisriehl/pod-fast')
-        },
-        {
-          label: 'About',
-          click: () => console.log('About')
         }
       ])
     }]);

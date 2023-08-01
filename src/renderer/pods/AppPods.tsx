@@ -12,7 +12,7 @@ export function AppPods(): ReactElement {
         <div className="table">
           { (pod.map((name: string, subIndex: number) => {
             return (
-              <p className="table-name" key={subIndex}>{name}</p>
+                <p className="table-name" key={subIndex}>{name}</p>
             )
           }))}
         </div>

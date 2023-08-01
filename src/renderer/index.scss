@@ -57,12 +57,16 @@
 }
 
 .table-name:nth-child(even) {
-  background-color: lightgray;
+  background-color: #EDEDED;
 }
 
 .icon-cancel {
   color: transparent;
-  text-shadow: 0 0 0 red;
+  text-shadow: 0 0 0 #dc3545;
+}
+
+hr {
+  margin: 5px 0;
 }
 
 h1 { 
